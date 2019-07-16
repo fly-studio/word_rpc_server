@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package org.fly.rpc_server.struct;
+
+message Request {
+    string className = 1; // class name
+    string functionName = 2; // function name
+    repeated string parameters = 3; // string array
+}
+
+message Response {
+    int32 code = 1; // 0 for success
+    string message = 2; // Error Message
+    string data = 3; // JSON
+}
