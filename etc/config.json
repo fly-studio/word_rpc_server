@@ -1,4 +1,4 @@
 {
   "log_dir": "./logs",
-  "debug": true
+  "debug": false
 }

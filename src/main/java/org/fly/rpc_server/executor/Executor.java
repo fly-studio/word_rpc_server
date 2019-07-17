@@ -101,7 +101,7 @@ public class Executor {
             request.context.channel().writeAndFlush(response);
         }
 
-        private Message exec(Request request) throws Exception
+        private Message exec(Request request) throws Throwable
         {
             if (request == null || request.data == null)
                 return null;
@@ -112,7 +112,8 @@ public class Executor {
             {
                 Rpc.Request rpcRequest = (Rpc.Request) request.data;
 
-                logger.debug("call {}.{}({})", rpcRequest.getClassName(), rpcRequest.getFunctionName(), rpcRequest.getParametersList().toString());
+                if (Setting.config.debug)
+                    logger.debug("call {}.{}({})", rpcRequest.getClassName(), rpcRequest.getFunctionName(), rpcRequest.getParametersList().toString());
 
                 synchronized (classes)
                 {
