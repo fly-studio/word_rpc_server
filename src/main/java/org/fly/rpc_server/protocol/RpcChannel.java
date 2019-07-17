@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class RpcChannel extends SimpleChannelInboundHandler {
     private final static Logger logger = LoggerFactory.getLogger(RpcChannel.class);
+    private static Executor executor = new Executor();
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -19,7 +20,7 @@ public class RpcChannel extends SimpleChannelInboundHandler {
         if (msg == null)
             return;
 
-        Server.executor.add((Request) msg);
+        executor.exec((Request) msg);
     }
 
     @Override

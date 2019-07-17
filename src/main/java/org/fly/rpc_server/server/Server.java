@@ -26,8 +26,6 @@ public class Server {
 
     private final static Logger logger = LoggerFactory.getLogger(Server.class);
 
-    public final static Executor executor = new Executor();
-
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
     private ServerBootstrap serverBootstrap;
@@ -86,8 +84,6 @@ public class Server {
     public void start()
     {
         try {
-            executor.run();
-
             // 绑定端口，开始接收进来的连接
             channelFuture = serverBootstrap.bind(host, port).sync();
             if(channelFuture.isSuccess()){
@@ -108,8 +104,6 @@ public class Server {
     @PreDestroy
     public void stop()
     {
-        executor.shutdown();
-
         channelFuture.channel().close().addListener(ChannelFutureListener.CLOSE);
         channelFuture.awaitUninterruptibly();
         bossGroup.shutdownGracefully();
