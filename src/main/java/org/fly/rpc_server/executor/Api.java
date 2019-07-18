@@ -25,7 +25,7 @@ public class Api {
 
     private static class TermSerializer extends StdSerializer<Term> {
 
-        public TermSerializer(Class<Term> t) {
+        TermSerializer(Class<Term> t) {
             super(t);
         }
 
@@ -40,7 +40,7 @@ public class Api {
     }
     
     private static class PinyinSerializer extends StdSerializer<Pinyin> {
-        protected PinyinSerializer(Class<Pinyin> t) {
+        PinyinSerializer(Class<Pinyin> t) {
             super(t);
         }
 
@@ -57,7 +57,7 @@ public class Api {
     }
 
     private static class SentenceSerializer extends StdSerializer<Sentence> {
-        protected SentenceSerializer(Class<Sentence> t) {
+        SentenceSerializer(Class<Sentence> t) {
             super(t);
         }
 
