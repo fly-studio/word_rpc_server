@@ -27,7 +27,7 @@ public class App
 
         setGlobalUncaughtExceptionHandler();
 
-        Server server = new Server("0.0.0.0", 8745);
+        Server server = new Server(Setting.config.server.host, Setting.config.server.port);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             logger.trace("Shutdown from Runtime hook.");
@@ -50,6 +50,5 @@ public class App
             logger.error("UnCaughtException", e);
         });
     }
-
 
 }
